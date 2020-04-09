@@ -7,9 +7,9 @@ const FoodItemList = (props) => {
         <thead align="center">
           <tr>
             <th>ID</th>
-            <th>Food</th>
-            <th>Cost</th>
-            <th width="25%">Actions</th>
+            <th>FOOD</th>
+            <th>COST</th>
+            <th width="30%">ACTIONS</th>
           </tr>
         </thead>
         <tbody>
@@ -24,19 +24,19 @@ const FoodItemList = (props) => {
                     className="btn btn-primary"
                     onClick={() => props.editFoodItem(foodItem)}
                   >
-                    Update
+                    UPDATE
                   </button>
                   <button
                     className="btn btn-danger mr-1 ml-1"
                     onClick={() => props.deleteFoodItem(foodItem.id)}
                   >
-                    Delete
+                    DELETE
                   </button>
                   <button
                     className="btn btn-info"
                     onClick={() => props.boughtFoodItem(foodItem)}
                   >
-                    {foodItem.status ? "bought " : "Pending"}
+                    {foodItem.status ? "BOUGHT " : "PENDING"}
                   </button>
                 </td>
               </tr>

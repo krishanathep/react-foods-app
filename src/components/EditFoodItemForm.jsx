@@ -1,22 +1,21 @@
 import React from "react";
 
-const AddFoodItemForm = (props) => {
+const EditFoodItemForm = (props) => {
   return (
-    <div className="AddFoodItemForm">
+    <div className="EditFoodItemForm">
         <div className="col-md-12">
           <div className="card my-5">
-            <div className="card-header">
-              <h5 className='card-title'>ADD FOOD ITEM</h5>
+          <div className="card-header">
+              <h5 className='card-title'>UPDATE FOOD ITEM</h5>
             </div>
             <div className="card-body">
-              <form onSubmit={props.addFoodItem}>
+              <form>
                 <div className="form-group">
                   <label>Food Name :</label>
                   <input
                     type="text"
                     name="food"
                     className="form-control"
-                    placeholder="Enter Food Name.."
                     value={props.food}
                     onChange={props.handleInputChange}
                   />
@@ -27,14 +26,18 @@ const AddFoodItemForm = (props) => {
                     type="text"
                     name="cost"
                     className="form-control"
-                    placeholder="Enter Food Cost..."
                     value={props.cost}
                     onChange={props.handleInputChange}
                   />
                 </div>
-                <button type="submit" className="btn btn-primary float-right">
-                  SUBMIT
+                <div className='float-right'>
+                <button onClick={props.updateFoodItem} className="btn btn-primary mr-1">
+                    SUBMIT
                 </button>
+                <button onClick={ () => props.setEditing(false)} className='btn btn-danger'>
+                    CANCEL
+                </button>
+                </div>
               </form>
             </div>
           </div>
@@ -43,4 +46,4 @@ const AddFoodItemForm = (props) => {
   );
 };
 
-export default AddFoodItemForm;
+export default EditFoodItemForm;
