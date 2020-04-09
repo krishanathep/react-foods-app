@@ -31,7 +31,7 @@ const EditFoodItemForm = (props) => {
                   />
                 </div>
                 <div className='float-right'>
-                <button onClick={props.updateFoodItem} className="btn btn-primary mr-1">
+                <button onClick={props.updateFoodItem, () => props.setEditing(false)} className="btn btn-primary mr-1">
                     SUBMIT
                 </button>
                 <button onClick={ () => props.setEditing(false)} className='btn btn-danger'>
