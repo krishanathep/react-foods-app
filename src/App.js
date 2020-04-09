@@ -102,7 +102,7 @@ class App extends Component {
     const updatedCost = this.state.cost
     const updatedFoodItem = Object.assign({}, this.state.foodItem, { food: updatedFood, cost: updatedCost})
     const foodItems = this.state.foodItems.map((foodItem) => (foodItem.id === this.state.foodItem.id ? updatedFoodItem : foodItem ))
-    this.setState({ food: '', cost: '', foodItems: foodItems })
+    this.setState({ food: '', cost: '', foodItems: foodItems, editing : false })
   }
 
   render() {
