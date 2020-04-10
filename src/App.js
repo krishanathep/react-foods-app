@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import FoodItemList from "./components/FoodItemList";
 import Navbar from "./layouts/Navbar";
-import Pagination from 'react-js-pagination'
-
+import { HashRouter, Switch, Route } from "react-router-dom"
+import Users from './components/Users'
 class App extends Component {
   constructor() {
     super();
@@ -112,21 +112,41 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar title='REACT FOOD ITEMS' />
-        <div className='container'>
-        <FoodItemList
-          foodItems={this.state.foodItems}
-          deleteFoodItem={this.deleteFoodItem}
-          editFoodItem={this.editFoodItem}
-          boughtFoodItem={this.boughtFoodItem}
-          food={this.state.food}
-          cost={this.state.cost}
-          addFoodItem={this.addFoodItem}
-          handleInputChange={this.handleInputChange}
-          updateFoodItem={this.updateFoodItem}
-          setEditing={this.setEditing}
-          />
+        <HashRouter basename='/'>
+          <Navbar title='REACT FOOD ITEMS' />
+          <Switch>
+            <div className='container'>
+              <Route
+                exact
+                path='/'
+                render={props => (
+                  <FoodItemList {...props}
+                    foodItems={this.state.foodItems}
+                    deleteFoodItem={this.deleteFoodItem}
+                    editFoodItem={this.editFoodItem}
+                    boughtFoodItem={this.boughtFoodItem}
+                    food={this.state.food}
+                    cost={this.state.cost}
+                    addFoodItem={this.addFoodItem}
+                    handleInputChange={this.handleInputChange}
+                    updateFoodItem={this.updateFoodItem}
+                    setEditing={this.setEditing}
+                  />      
+                )}
+              />
+              <Route
+                path='/users'
+                component={Users}
+              />
+            </div>
+          </Switch>
+        </HashRouter>
+
+        <footer className='footer my-5'>
+          <div className='container'>
+            <span className='text-muted'>&copy; REACT FOOD ITEMS by Full Stack Solution Co.,Ltd.</span>
           </div>
+        </footer>
       </div>
     );
   }
