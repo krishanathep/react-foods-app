@@ -5,7 +5,7 @@ const FoodItemList = (props) => {
     <div className="FoodItemList">
       <div className="row">
         <div className="col-md-12">
-          <div className="card">
+          <div className="card mt-5">
             <div className="card-body">
               <button
                 className='btn btn-success mb-2 float-right'
@@ -20,7 +20,7 @@ const FoodItemList = (props) => {
                     <th>ID</th>
                     <th>FOOD</th>
                     <th>COST</th>
-                    <th width="30%">ACTIONS</th>
+                    <th>ACTIONS</th>
                   </tr>
                 </thead>
                 <tbody>

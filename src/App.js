@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import AddFoodItemForm from "./components/AddFoodItemForm";
 import FoodItemList from "./components/FoodItemList";
-import EditFoodItemForm from "./components/EditFoodItemForm";
+import Navbar from "./layouts/Navbar";
+import Pagination from 'react-js-pagination'
 
 class App extends Component {
   constructor() {
@@ -17,11 +17,15 @@ class App extends Component {
         userId: 1,
         food: "",
         cost: 0,
-        state: false,
+        state: false
       },
       foodItems: [
         { id: 1, userId: 1, food: "Rice", cost: 100, status: false },
         { id: 2, userId: 2, food: "Beans", cost: 200, status: false },
+        { id: 3, userId: 3, food: "Coke", cost: 400, status: false },
+        { id: 4, userId: 4, food: "Coffee", cost: 300, status: true },
+        { id: 5, userId: 5, food: "Donut", cost: 200, status: false },
+        { id: 6, userId: 6, food: "Sushi", cost: 500, status: true }
       ],
       editing: false,
     };
@@ -107,10 +111,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App container">
-        <h2 className="my-5" align="center">
-          REACT FOOD ITEMS
-        </h2>
+      <div className="App">
+        <Navbar title='REACT FOOD ITEMS' />
+        <div className='container'>
         <FoodItemList
           foodItems={this.state.foodItems}
           deleteFoodItem={this.deleteFoodItem}
@@ -122,7 +125,8 @@ class App extends Component {
           handleInputChange={this.handleInputChange}
           updateFoodItem={this.updateFoodItem}
           setEditing={this.setEditing}
-        />
+          />
+          </div>
       </div>
     );
   }
