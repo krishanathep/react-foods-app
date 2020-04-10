@@ -90,7 +90,7 @@ class App extends Component {
   }
 
   setEditing(value) {
-    if(typeof value !== 'boolean') { throw "This value must either be true or false" }
+    {/*if(typeof value !== 'boolean') { throw "This value must either be true or false" }*/ }
     this.setState({
       editing: value, food: '', cost: ''
     })
@@ -116,25 +116,13 @@ class App extends Component {
           deleteFoodItem={this.deleteFoodItem}
           editFoodItem={this.editFoodItem}
           boughtFoodItem={this.boughtFoodItem}
+          food={this.state.food}
+          cost={this.state.cost}
+          addFoodItem={this.addFoodItem}
+          handleInputChange={this.handleInputChange}
+          updateFoodItem={this.updateFoodItem}
+          setEditing={this.setEditing}
         />
-        {
-          this.state.editing ? (
-            <EditFoodItemForm
-              setEditing={this.setEditing}
-              food={this.state.food}
-              cost={this.state.cost}
-              handleInputChange={this.handleInputChange}
-              updateFoodItem={this.updateFoodItem}
-            />
-          ) : (
-            <AddFoodItemForm
-              food={this.state.food}
-              cost={this.state.cost}
-              handleInputChange={this.handleInputChange}
-              addFoodItem={this.addFoodItem}
-            />
-          )
-        }  
       </div>
     );
   }
