@@ -7,31 +7,31 @@ export class Navbar extends Component {
             <div className='Navbar'>
                 <nav className='navbar navbar-expand-lg bg-info navbar-dark fixed-top'>
                     <div className="container">
-                        <a href="#" className="navbar-brand">
+                        <Link to={'/'} className="navbar-brand">
                             {this.props.title}
-                        </a>
+                        </Link>
 
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <Link to='/' className='nav-link'>Home</Link>
+                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item">
+                                <Link to={'/'} className='nav-link'>Home</Link>
                             </li>
-                            <li class="nav-item">
-                                <Link to='/users' className='nav-link'>Users</Link>
+                            <li className="nav-item">
+                                <Link to={'/users'} className='nav-link'>Users</Link>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <li className="nav-item dropdown">
+                                <Link className="nav-link dropdown-toggle" to={'#'} id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Dropdown
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </Link>
+                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <Link className="dropdown-item" to={'#'}>Action</Link>
+                                    <Link className="dropdown-item" to={'#'}>Another action</Link>
+                                    <div className="dropdown-divider"></div>
+                                    <Link className="dropdown-item" to={'#'}>Something else here</Link>
                                 </div>
                             </li>
                             </ul>

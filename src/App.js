@@ -94,7 +94,6 @@ class App extends Component {
   }
 
   setEditing(value) {
-    {/*if(typeof value !== 'boolean') { throw "This value must either be true or false" }*/ }
     this.setState({
       editing: value, food: '', cost: ''
     })

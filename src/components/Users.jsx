@@ -34,7 +34,7 @@ export class Users extends Component {
                                     <tbody>
                                         {this.state.users.map(user => (
                                         <tr>
-                                                <td><img alt="picture" className='avatar' src={`https://robohash.org/${user.id}?set=set2&size=200x200`} /></td>
+                                            <td><img alt="" className='avatar' src={`https://robohash.org/${user.id}?set=set2&size=200x200`} /></td>
                                             <td>{user.name}</td>
                                             <td>{user.email}</td>
                                         </tr>
