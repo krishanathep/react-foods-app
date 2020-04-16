@@ -84,6 +84,14 @@ class App extends Component {
     }
   }
 
+  viewFoodItem(foodItem) {
+    this.setState({
+      food: foodItem.food,
+      cost: foodItem.cost,
+      foodItem: foodItem
+    })
+  }
+
   editFoodItem(foodItem) {
     this.setEditing(true)
     this.setState({
@@ -126,10 +134,12 @@ class App extends Component {
                     boughtFoodItem={this.boughtFoodItem}
                     food={this.state.food}
                     cost={this.state.cost}
+                    status={this.state.status}
                     addFoodItem={this.addFoodItem}
                     handleInputChange={this.handleInputChange}
                     updateFoodItem={this.updateFoodItem}
                     setEditing={this.setEditing}
+                    viewFoodItem={this.viewFoodItem}
                   />      
                 )}
               />

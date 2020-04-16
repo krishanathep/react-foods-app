@@ -8,9 +8,9 @@ const FoodItemList = (props) => {
           <div className="card mt-5">
             <div className="card-body">
               <button
-                className='btn btn-success mb-2 float-right'
-                data-toggle='modal'
-                data-target='#addNewModal'
+                className="btn btn-success mb-2 float-right"
+                data-toggle="modal"
+                data-target="#addNewModal"
               >
                 <i class="fas fa-plus-circle"></i> ADD NEW
               </button>
@@ -28,14 +28,23 @@ const FoodItemList = (props) => {
                     props.foodItems.map((foodItem) => (
                       <tr key={foodItem.id}>
                         <td align="center">{foodItem.id}</td>
-                        <td>{foodItem.food}</td>
+                        <td>
+                        <a
+                            href="#"
+                            onClick={() => props.editFoodItem(foodItem)}
+                            data-toggle="modal"
+                            data-target="#viewModal"
+                          >
+                            {foodItem.food}
+                          </a>
+                        </td>
                         <td>{foodItem.cost}</td>
                         <td>
                           <button
                             className="btn btn-primary"
                             onClick={() => props.editFoodItem(foodItem)}
-                            data-toggle='modal'
-                            data-target='#updateModal'
+                            data-toggle="modal"
+                            data-target="#updateModal"
                           >
                             <i class="fas fa-edit"></i>
                           </button>
@@ -49,16 +58,22 @@ const FoodItemList = (props) => {
                             className="btn btn-info"
                             onClick={() => props.boughtFoodItem(foodItem)}
                           >
-                            {foodItem.status ? <i class="fas fa-cart-plus"></i> : <i class="far fa-clock"></i>}
+                            {foodItem.status ? (
+                              <i class="fas fa-cart-plus"></i>
+                            ) : (
+                              <i class="far fa-clock"></i>
+                            )}
                           </button>
                         </td>
                       </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan={4} align='center'>No food for a lazy man!</td>
-                      </tr>
-                    )}
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan={4} align="center">
+                        No food for a lazy man!
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -67,12 +82,26 @@ const FoodItemList = (props) => {
       </div>
 
       {/* Add New Modal*/}
-      <div class="modal fade" id="addNewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div
+        class="modal fade"
+        id="addNewModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">NEW FOOD ITEM</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <h5 class="modal-title" id="exampleModalLabel">
+                NEW FOOD ITEM
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -91,30 +120,110 @@ const FoodItemList = (props) => {
                 <div className="form-group">
                   <input
                     type="text"
-                    name='cost'
+                    name="cost"
                     value={props.cost}
-                    className='form-control'
-                    placeholder='Enter Food Cost...'
+                    className="form-control"
+                    placeholder="Enter Food Cost..."
                     onChange={props.handleInputChange}
                   />
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button onClick={props.addFoodItem} data-dismiss="modal" type="button" class="btn btn-primary">SUBMIT</button>
-              <button onClick={() => props.setEditing(false)} type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+              <button
+                onClick={props.addFoodItem}
+                data-dismiss="modal"
+                type="button"
+                class="btn btn-primary"
+              >
+                SUBMIT
+              </button>
+              <button
+                onClick={() => props.setEditing(false)}
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                CLOSE
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* View Modal*/}
+      <div
+        class="modal fade"
+        id="viewModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                VIEW FOOD ITEM
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div className="container">
+                <table className="table table-bordered">
+                  <tr>
+                    <th>NAME</th>
+                    <td>{props.food}</td>
+                  </tr>
+                  <tr>
+                    <th>COST</th>
+                    <td>{props.cost}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                onClick={() => props.setEditing(false)}
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                CLOSE
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Update Modal*/}
-      <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div
+        class="modal fade"
+        id="updateModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">UPDATE FOOD ITEM</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <h5 class="modal-title" id="exampleModalLabel">
+                UPDATE FOOD ITEM
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -133,18 +242,32 @@ const FoodItemList = (props) => {
                 <div className="form-group">
                   <input
                     type="text"
-                    name='cost'
+                    name="cost"
                     value={props.cost}
-                    className='form-control'
-                    placeholder='Enter Food Cost...'
+                    className="form-control"
+                    placeholder="Enter Food Cost..."
                     onChange={props.handleInputChange}
                   />
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button onClick={props.updateFoodItem} data-dismiss="modal" type="button" class="btn btn-primary">SUBMIT</button>
-              <button onClick={() => props.setEditing(false)} type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+              <button
+                onClick={props.updateFoodItem}
+                data-dismiss="modal"
+                type="button"
+                class="btn btn-primary"
+              >
+                SUBMIT
+              </button>
+              <button
+                onClick={() => props.setEditing(false)}
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                CLOSE
+              </button>
             </div>
           </div>
         </div>
